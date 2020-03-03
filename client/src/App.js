@@ -8,6 +8,8 @@ import {Switch, Route} from 'react-router-dom'
 import NavBar from './components/ui/Navbar'
 import Signup from './components/pages/auth/signup/Signup'
 import Login from './components/pages/auth/login/Login'
+import BeachList from './components/pages/beachList/BeachList'
+import BeachDetails from './components/pages/beachDetails/BeachDeatils'
 
 import AuthServices from './services/auth.services'
 
@@ -19,6 +21,7 @@ class App extends Component {
     this.services = new AuthServices()
   }
 
+  //TO-DO borra esto
   componentDidUpdate = (prevProps, prevState) => console.log("El estado de App se ha actualizado:", this.state)
   componentDidMount = () => this.fetchUser()
 
@@ -38,7 +41,8 @@ class App extends Component {
         <NavBar setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />
 
         <Switch>
-          <Route exact path="/" render={() => <h1>Hola</h1>} />
+          <Route exact path="/" render={() => <BeachList />}/>
+          <Route path="/detalles/:id" render={props => <BeachDetails {...props} setTheUser={this.setTheUser}/>} />
           <Route path="/signup" render={() => <Signup setTheUser={this.setTheUser} />} />
           <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
         </Switch>

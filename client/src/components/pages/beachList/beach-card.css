@@ -1,0 +1,8 @@
+.card-beach img {
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-beach {
+    margin-bottom: 20px;
+}
