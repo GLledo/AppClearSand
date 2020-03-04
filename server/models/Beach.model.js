@@ -22,12 +22,8 @@ const beachSchema = new Schema({
   Composicion: String,
   Comunidad_Autonoma: String,
   Condiciones_bano: String,
-  location: {
-    type: {
-        type: String
-    },
-    coordinates: [Number]
-  },
+  Coordenada_X:Number,
+  Coordenada_Y:Number,
   Coordenada_geografica_Latitud: String,
   Coordenada_geografica_Longitud: String,
   Codigo_INE_Municipio: Number,

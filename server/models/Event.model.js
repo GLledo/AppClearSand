@@ -21,6 +21,7 @@ const eventSchema = new Schema({
     ref: 'User'
   }],
   title:String,
+  dateevent: String,
 }, {
   timestamps: {
     createdAt: 'created_at',

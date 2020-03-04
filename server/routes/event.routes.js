@@ -12,7 +12,8 @@ router.post('/new', (req, res, next) => {
       imgurl: req.body.event.imgurl,
       description: req.body.event.description,
       beach: req.body.id,
-      title: req.body.event.title
+      title: req.body.event.title,
+      dateevent: req.body.event.dateevent
     })
     .then(eventID =>{
           const promise1 = User.findByIdAndUpdate(req.user._id, {

@@ -6,7 +6,7 @@ import './event-card.css'
 
 import { Link } from 'react-router-dom'
 
-const EventCard = ({ title, imgurl, _id }) => {
+const EventCard = ({ title, imgurl, _id,dateevent }) => {
     return (
         <Col md={12}>
             <Card className="card-beach">
@@ -15,6 +15,7 @@ const EventCard = ({ title, imgurl, _id }) => {
                 </Link>
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
+                    <Card.Title>{dateevent}</Card.Title>
                     <hr></hr>
                 </Card.Body>
             </Card>

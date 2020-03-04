@@ -28,6 +28,7 @@ class EventDetails extends Component {
         return (
             <Container >
                 <h1>{this.state.event.title}</h1>
+                <p>{this.state.event.dateevent}</p>
                 <Row>
                     <Col md={{ span: 4, offset: 1 }}>
                         <p>{this.state.event.description}</p>
@@ -45,7 +46,7 @@ class EventDetails extends Component {
 }
 
 // TO-DO
-// {this.props.loggedInUser && <Button className="mb-20" variant="dark" onClick={this.openModal}>Crear Montaña rusa</Button>}
+// {this.props.loggedInUser && <Button className="mb-20" variant="dark" onClick={this.openModal}></Button>}
 
 
 export default EventDetails

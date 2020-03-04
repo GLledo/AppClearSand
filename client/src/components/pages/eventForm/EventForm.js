@@ -4,8 +4,11 @@ import EventsServices from '../../../services/event.services'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Calendar from 'react-calendar';
+import moment from 'moment'
 
-import FilesServices from '../../../services/files.services'
+
+import FilesServices from '../../../services/files.services'  
 
 class EventForm extends Component {
 
@@ -18,7 +21,8 @@ class EventForm extends Component {
                 imgurl: '',
                 description: '',
                 title:'',
-            }
+                dateevent:new Date(),
+            },
         }
     }
 
@@ -27,7 +31,7 @@ class EventForm extends Component {
         this.props.refreshList()
     }
 
-    postCoaster = () => {
+    postEvent = () => {
         this.eventsServices.postEvent(this.state.event,this.props.beachId)
             .then(() => this.finishAction())
             .catch(err => console.log(err))
@@ -42,7 +46,13 @@ class EventForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        this.postCoaster()
+        this.postEvent()
+    }
+
+    onChange = date => {
+        console.log(date.toLocaleDateString("en-US"))
+        this.setState({  event: {...this.state.event, dateevent: date }})
+        
     }
 
     handleFileUpload = e => {
@@ -50,7 +60,7 @@ class EventForm extends Component {
         uploadData.append("imgurl", e.target.files[0])
         this.filesServices.handleUpload(uploadData)
             .then(response => {
-                console.log('Subida de archivo finalizada! La URL de Cloudinray es: ', response.secure_url)
+                console.log('La URL de Cloudinray es: ', response.secure_url)
                 this.setState({
                     event: { ...this.state.event, imgurl: response.secure_url }
                 })
@@ -58,6 +68,7 @@ class EventForm extends Component {
             .catch(err => console.log(err))
     }
 
+    
     render() {
 
         return (
@@ -74,6 +85,10 @@ class EventForm extends Component {
                     <Form.Label>Imagen</Form.Label>
                     <Form.Control type="file" name="imgurl" onChange={this.handleFileUpload} />
                 </Form.Group>
+                <div>
+                    <h3>Elige el dia de tu evento</h3>
+                    <Calendar onChange={this.onChange} value={this.state.event.dateevent}/>
+                </div>
 
                 <Button variant="dark" type="submit">Crear el evento</Button>
             </Form>

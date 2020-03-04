@@ -22,7 +22,6 @@ class EventList extends Component {
             this.setState({events: this.props})
         }
     }
-    // componentDidMount = () => this.getFiveBeaches()
 
     render() { 
 

@@ -11,6 +11,7 @@ import Button from 'react-bootstrap/Button'
 
 import EventForm from '../eventForm/EventForm'
 import EventList from '../eventList/EventList'
+import SimpleMap from '../googleMap/GoogleMapReact'
 
 
 class BeachDetails extends Component {
@@ -34,6 +35,7 @@ class BeachDetails extends Component {
 
     closeModal = () => this.setState({ showmodal: false })
     openModal = () => this.setState({ showmodal: true })
+       
 
     render() {
         return (
@@ -51,6 +53,8 @@ class BeachDetails extends Component {
                     Crea un evento
                 </Button>
                 
+                <SimpleMap latitud={this.state.beach.Coordenada_Y} longitud={this.state.beach.Coordenada_X} name={this.state.beach.Nombre}></SimpleMap>
+
                 <Modal show={this.state.showmodal} onHide={this.closeModal}>
                     <Modal.Body>
                         <h3>Crea un evento nuevo</h3>
@@ -67,7 +71,7 @@ class BeachDetails extends Component {
 }
 
 // TO-DO
-// {this.props.loggedInUser && <Button className="mb-20" variant="dark" onClick={this.openModal}>Crear Montaña rusa</Button>}
+// {this.props.loggedInUser && <Button className="mb-20" variant="dark" onClick={this.openModal}></Button>}
 
 
 export default BeachDetails

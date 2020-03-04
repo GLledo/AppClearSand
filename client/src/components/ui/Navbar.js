@@ -20,9 +20,7 @@ class Navigation extends Component {
 
     logout = () => {
         this.services.logout()
-            .then(response => {
-                this.props.setTheUser(false)
-            })
+            .then(response => this.props.setTheUser(false))
             .catch(err => console.log(err))
     }
 
