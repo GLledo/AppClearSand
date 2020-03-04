@@ -20,6 +20,7 @@ const eventSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   }],
+  title:String,
 }, {
   timestamps: {
     createdAt: 'created_at',

@@ -10,6 +10,7 @@ import Signup from './components/pages/auth/signup/Signup'
 import Login from './components/pages/auth/login/Login'
 import BeachList from './components/pages/beachList/BeachList'
 import BeachDetails from './components/pages/beachDetails/BeachDeatils'
+import EventDetails from './components/pages/eventDetails/EventDetails'
 
 import AuthServices from './services/auth.services'
 
@@ -43,6 +44,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={() => <BeachList />}/>
           <Route path="/detalles/:id" render={props => <BeachDetails {...props} setTheUser={this.setTheUser}/>} />
+          <Route path="/detalles-evento/:id" render={props => <EventDetails {...props} setTheUser={this.setTheUser}/>} />
           <Route path="/signup" render={() => <Signup setTheUser={this.setTheUser} />} />
           <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
         </Switch>

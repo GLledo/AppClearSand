@@ -12,6 +12,7 @@ router.post('/new', (req, res, next) => {
       imgurl: req.body.event.imgurl,
       description: req.body.event.description,
       beach: req.body.id,
+      title: req.body.event.title
     })
     .then(eventID =>{
           const promise1 = User.findByIdAndUpdate(req.user._id, {
@@ -39,6 +40,12 @@ router.post('/new', (req, res, next) => {
       })
 
     .catch(err => console.log(err))
+  })
+
+  router.get('/getOneEvent/:id', (req, res, next) => {
+    Event.findById(req.params.id)
+      .then(theEvent => res.json(theEvent))
+      .catch(err => console.log(err))
   })
 
 module.exports = router

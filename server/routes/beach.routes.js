@@ -20,7 +20,6 @@ router.get('/getOneBeach/:id', (req, res, next) => {
   Beach.findById(req.params.id)
     .populate("event")
     .then(theBeach => {
-      console.log(theBeach)
       res.json(theBeach)})
     .catch(err => console.log(err))
 })

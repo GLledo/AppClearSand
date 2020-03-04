@@ -17,6 +17,7 @@ class EventForm extends Component {
             event: {
                 imgurl: '',
                 description: '',
+                title:'',
             }
         }
     }
@@ -61,6 +62,10 @@ class EventForm extends Component {
 
         return (
             <Form onSubmit={this.handleSubmit}>
+                <Form.Group>
+                    <Form.Label>Titulo</Form.Label>
+                    <Form.Control type="text" name="title" value={this.state.event.title} onChange={this.handleChange} />
+                </Form.Group>
                 <Form.Group>
                     <Form.Label>Descripcion</Form.Label>
                     <Form.Control type="text" name="description" value={this.state.event.description} onChange={this.handleChange} />

@@ -12,6 +12,7 @@ import Button from 'react-bootstrap/Button'
 import EventForm from '../eventForm/EventForm'
 import EventList from '../eventList/EventList'
 
+
 class BeachDetails extends Component {
 
     constructor(props) {

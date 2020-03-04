@@ -6,15 +6,15 @@ import './event-card.css'
 
 import { Link } from 'react-router-dom'
 
-const EventCard = ({ description, imgurl, _id }) => {
+const EventCard = ({ title, imgurl, _id }) => {
     return (
         <Col md={12}>
             <Card className="card-beach">
-                <Link to={`/detalles/${_id}`}>
+                <Link to={`/detalles-evento/${_id}`}>
                     <Card.Img variant="top" src={imgurl} />
                 </Link>
                 <Card.Body>
-                    <Card.Title>{description}</Card.Title>
+                    <Card.Title>{title}</Card.Title>
                     <hr></hr>
                 </Card.Body>
             </Card>
