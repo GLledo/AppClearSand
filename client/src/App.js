@@ -36,7 +36,7 @@ class App extends Component {
 
 
   render() {
-
+    
     return (
       <>
         <NavBar setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />

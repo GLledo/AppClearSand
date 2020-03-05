@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'
+
  
 const AnyReactComponent = ({ text }) => <div>{text}</div>
  
@@ -9,13 +10,15 @@ class SimpleMap extends Component {
     this.state = {}
   }
   render() {
+    console.log(this.api)
     return (
       <div style={{ height: '40vh', width: '50%' }}>
       {this.props.latitud ? 
         <GoogleMapReact
-          bootstrapURLKeys={{ key: `${process.env.GMA}` }}
+          bootstrapURLKeys={{ key: process.env.REACT_APP_GMA }}
           defaultCenter={[this.props.latitud,this.props.longitud]}
           defaultZoom={11}
+          yesIWantToUseGoogleMapApiInternals
         >
           <AnyReactComponent
             lat={this.props.latitud}
