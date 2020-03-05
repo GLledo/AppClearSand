@@ -22,6 +22,7 @@ class BeachList extends Component {
     getFiveBeaches = () => {
         this.services.getFiveBeaches()
             .then(allBeaches => {
+                console.log(allBeaches)
                 this.setState({ beaches: allBeaches })
             })
             .catch(err => console.log(err))
