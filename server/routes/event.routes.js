@@ -49,4 +49,41 @@ router.post('/new', (req, res, next) => {
       .catch(err => console.log(err))
   })
 
+  router.post('/addUser/:id', (req, res, next) => {
+
+    let userComeUp = {}
+    if (req.user.comeup.includes(req.params.id)) {
+      userComeUp = {
+        $pull: {
+          comeup: req.params.id
+        }
+      }
+    } else {
+      userComeUp = {
+        $push: {
+          comeup: req.params.id
+        }
+      }
+    }
+    const promise1 = User.findByIdAndUpdate(req.user._id, userComeUp).then(user => user)
+
+    const promise2 =  Event.findById(req.params.id )
+                      .then(theEvent => {
+                        let eventComeUp 
+                         theEvent.userid.includes(req.user._id) ? eventComeUp = {$pull: {userid: req.user._id}} : eventComeUp = {$push: {userid: req.user._id}}  
+                         return Event.findByIdAndUpdate(req.params.id, eventComeUp, {new: true})
+                        })
+                        .then(updatedEvent => updatedEvent)
+                        
+    Promise.all([promise1,promise2])
+         .then(x => {
+          console.log(x)
+          const message = {msg: "Tu id de evento se ha guardado en tu usuario y en la playa"}
+          res.status(200).json(message)
+  
+          })
+          .catch(err => console.error(err))
+    
+  })
+
 module.exports = router

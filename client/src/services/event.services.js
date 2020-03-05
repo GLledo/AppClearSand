@@ -12,4 +12,5 @@ export default class Services {
 
     postEvent = (event,id) => this.service.post(`/new`, {event,id}).then(response => response.data)
     getEventDetails = id => this.service.get(`/getOneEvent/${id}`).then(response => response.data)
+    postEventAddUser = id => this.service.post(`/addUser/${id}`).then(response => response.data)
 }

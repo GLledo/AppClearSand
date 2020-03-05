@@ -18,6 +18,12 @@ class EventDetails extends Component {
 
     componentDidMount = () => this.getEventDetails()
 
+    postEventAddUser = () => {
+        this.services.postEventAddUser(this.state.event._id)
+            .then(x => console.log(x))//TO-DO como 
+            .catch(err => console.log(err))
+    }
+
     getEventDetails = () => {
         this.services.getEventDetails(this.props.match.params.id)
             .then(theEvent => this.setState({ event: theEvent }))
@@ -37,7 +43,9 @@ class EventDetails extends Component {
                         <img src={this.state.event.imgurl} alt={this.state.event.title}></img>
                     </Col>
                 </Row>
+
                 
+                <button onClick={this.postEventAddUser}>Apuntarse evento</button>
                 {/* {this.state.beach.event && <EventList arr={this.state.beach.event}/>} */}
 
             </Container>

@@ -10,14 +10,13 @@ class SimpleMap extends Component {
     this.state = {}
   }
   render() {
-    console.log(this.api)
     return (
       <div style={{ height: '40vh', width: '50%' }}>
       {this.props.latitud ? 
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_GMA }}
           defaultCenter={[this.props.latitud,this.props.longitud]}
-          defaultZoom={11}
+          defaultZoom={17}
           yesIWantToUseGoogleMapApiInternals
         >
           <AnyReactComponent

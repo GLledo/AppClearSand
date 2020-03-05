@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
 
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect } from 'react-router-dom'
 
 import NavBar from './components/ui/Navbar'
 import Signup from './components/pages/auth/signup/Signup'
@@ -34,7 +34,6 @@ class App extends Component {
       .catch(() => this.setState({ loggedInUser: false }))
   }
 
-
   render() {
     
     return (
@@ -42,11 +41,18 @@ class App extends Component {
         <NavBar setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />
 
         <Switch>
-          <Route exact path="/" render={() => <BeachList />}/>
-          <Route path="/detalles/:id" render={props => <BeachDetails {...props} setTheUser={this.setTheUser}/>} />
-          <Route path="/detalles-evento/:id" render={props => <EventDetails {...props} setTheUser={this.setTheUser}/>} />
+          <Route exact path="/" render={() => <BeachList setTheUser={this.setTheUser} />}/>
           <Route path="/signup" render={() => <Signup setTheUser={this.setTheUser} />} />
           <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
+
+          {this.state.loggedInUser ? (
+            <>
+              <Route path="/detalles-evento/:id" render={props => this.state.loggedInUser ? <EventDetails {...props} loggedInUser={this.state.loggedInUser}/>: <Redirect to="/" />} />
+              <Route path="/detalles/:id" render={props => this.state.loggedInUser ? <BeachDetails {...props} loggedInUser={this.state.loggedInUser}/> : <Redirect to="/" />} />
+            </>
+          ) : (
+              <Redirect to="/" />
+            )}
         </Switch>
       </>
 
