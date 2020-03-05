@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 
 import EventsServices from '../../../services/event.services'
+import FilesServices from '../../../services/files.services' 
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Calendar from 'react-calendar';
-import moment from 'moment'
 
-
-import FilesServices from '../../../services/files.services'  
+ 
 
 class EventForm extends Component {
 

@@ -21,4 +21,9 @@ app.use('/api/beach', require('./routes/beach.routes'))
 app.use('/api/event', require('./routes/event.routes'))
 app.use('/api/files', require('./routes/files.routes.js'))
 
+//heroku
+app.use((req,res) => {
+    res.sendFile(__dirname + "/public/index.html")
+})
+
 module.exports = app

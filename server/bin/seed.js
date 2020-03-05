@@ -7,7 +7,7 @@ const beaches = require("./clearsand-4e9e0-PLAYAS-export-1.json")
 
 console.log(beaches)
 
-const connect = mongoose.connect(`${process.env.DB}`, {
+const connect = mongoose.connect(`${process.env.DB_REMOTE}`, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
