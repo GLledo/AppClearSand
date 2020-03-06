@@ -11,4 +11,5 @@ export default class Services {
 
     getFiveBeaches = () => this.service.get('/getFiveBeaches').then(response => response.data)
     getBeachDetails = id => this.service.get(`/getOneBeach/${id}`).then(response => response.data)
+    getAllComunidad = comunidad => this.service.get(`/getAllComunidad/${comunidad}`).then(response => response.data)
 }

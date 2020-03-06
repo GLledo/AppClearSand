@@ -1,7 +1,9 @@
+// ---------- REACT --------
 import React, { Component } from 'react'
-
+import { Link } from 'react-router-dom'
+// --------- SERVICES --------
 import EventServices from '../../../services/event.services'
-
+// --------- BOOTSTRAP --------
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -11,21 +13,21 @@ class EventDetails extends Component {
     constructor(props) {
         super(props)
         this.state = { 
-            event: {},
+            event: {}
          }
-        this.services = new EventServices()
+        this.eventServices = new EventServices()
     }
 
     componentDidMount = () => this.getEventDetails()
 
     postEventAddUser = () => {
-        this.services.postEventAddUser(this.state.event._id)
-            .then(x => console.log(x))//TO-DO como 
+        this.eventServices.postEventAddUser(this.state.event._id)
+            .then(x => console.log(x))//TO-DO como mostrar al ususario que se ha apuntado 
             .catch(err => console.log(err))
     }
 
     getEventDetails = () => {
-        this.services.getEventDetails(this.props.match.params.id)
+        this.eventServices.getEventDetails(this.props.match.params.id)
             .then(theEvent => this.setState({ event: theEvent }))
             .catch(err => console.log(err))
     }
@@ -44,7 +46,7 @@ class EventDetails extends Component {
                     </Col>
                 </Row>
 
-                
+                <Link to={`/evento-usuarios/${this.state.event._id}`}>Link para ver los ususarios apuntados</Link>
                 <button onClick={this.postEventAddUser}>Apuntarse evento</button>
                 {/* {this.state.beach.event && <EventList arr={this.state.beach.event}/>} */}
 

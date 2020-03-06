@@ -1,18 +1,19 @@
+//--------- REACT ------------
 import React, { Component } from 'react'
-
-import BeachesServices from '../../../services/beach.services'
+/// ----------- CSS ------------
 import './beach-deatils.css'
-
+//--------- SERVICIES -----------
+import BeachesServices from '../../../services/beach.services'
+// ---------- BOOTSTRAP -----------
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
-
+// ----------- PAGES COMPONENTS ---------
 import EventForm from '../eventForm/EventForm'
 import EventList from '../eventList/EventList'
 import SimpleMap from '../googleMap/GoogleMapReact'
-
 
 class BeachDetails extends Component {
 
@@ -22,20 +23,19 @@ class BeachDetails extends Component {
             beach: {},
             showmodal: false
          }
-        this.services = new BeachesServices()
+        this.beachesServices = new BeachesServices()
     }
 
     componentDidMount = () => this.getBeachDetails()
 
     getBeachDetails = () => {
-        this.services.getBeachDetails(this.props.match.params.id)
+        this.beachesServices.getBeachDetails(this.props.match.params.id)
             .then(theBeach => this.setState({ beach: theBeach }))
             .catch(err => console.log(err))
     }
 
     closeModal = () => this.setState({ showmodal: false })
     openModal = () => this.setState({ showmodal: true })
-       
 
     render() {
         return (

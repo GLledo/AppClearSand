@@ -1,9 +1,8 @@
+// ---------- REACT --------
 import React, { Component } from 'react'
-
-import EventServices from '../../../services/event.services'
-
+// -------- PAGES COMMPONENTS --------
 import EventCard from './EventCard'
-
+// --------- BOOTSTRAP ----------
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 
@@ -14,14 +13,9 @@ class EventList extends Component {
         this.state = {
             events: props
         }
-        this.services = new EventServices()
     }
 
-    componentDidUpdate = (prevProps) =>{ 
-        if (this.props !== prevProps){
-            this.setState({events: this.props})
-        }
-    }
+    componentDidUpdate = (prevProps) =>{ if (this.props !== prevProps)this.setState({events: this.props})}
 
     render() { 
 
@@ -37,7 +31,7 @@ class EventList extends Component {
                 )
                     :
                     <></>
-
+                    
                 }
 
             </Container>

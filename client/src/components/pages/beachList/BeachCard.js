@@ -1,10 +1,11 @@
+// ---------- REACT ----------
 import React from 'react'
-
+import { Link } from 'react-router-dom'
+// ----------- CSS ----------
+import './beach-card.css'
+//------------ BOOTSTRAP --------
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
-import './beach-card.css'
-
-import { Link } from 'react-router-dom'
 
 const BeachCard = ({ Nombre, urlImagen, _id , Provincia}) => {
     return (

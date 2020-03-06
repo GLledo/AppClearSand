@@ -1,13 +1,12 @@
+// -------- REACT ---------
 import React, { Component } from 'react'
-
+// ------- SERVICIES ----------
 import EventsServices from '../../../services/event.services'
 import FilesServices from '../../../services/files.services' 
-
+// ----- BOOTSTRAP ----------
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Calendar from 'react-calendar';
-
- 
 
 class EventForm extends Component {
 
@@ -48,11 +47,9 @@ class EventForm extends Component {
         this.postEvent()
     }
 
-    onChange = date => {
-        console.log(date.toLocaleDateString("en-US"))
-        this.setState({  event: {...this.state.event, dateevent: date }})
-        
-    }
+    onChange = date => this.setState({  
+        event: {...this.state.event, dateevent: date }
+    })
 
     handleFileUpload = e => {
         const uploadData = new FormData()

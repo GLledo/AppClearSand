@@ -3,12 +3,12 @@ import React, { Component } from 'react'
 // ---------- SERVICES -----------
 import BeachServices from '../../../services/beach.services'
 // ---------- PAGES COMPONENST --------
-import BeachCard from './BeachCard'
+import BeachCard from '../beachList/BeachCard'
 // ---------- BOOTSTRAP ---------
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 
-class BeachList extends Component {
+class BeachCommunityList extends Component {
 
     constructor(props) {
         super(props)
@@ -18,11 +18,14 @@ class BeachList extends Component {
         this.beachServices = new BeachServices()
     }
 
-    componentDidMount = () => this.getFiveBeaches()
+    componentDidMount = () => this.getAllComunidad()
 
-    getFiveBeaches = () => {
-        this.beachServices.getFiveBeaches()
-            .then(allBeaches => this.setState({ beaches: allBeaches }))
+    getAllComunidad = () => {
+        this.beachServices.getAllComunidad(this.props.match.params.comunidad)
+            .then(allBeaches => {
+                console.log(allBeaches, 'las bitches')
+                this.setState({ beaches: allBeaches }, ()=> console.log(allBeaches, 'las bitches, 2'))
+            })
             .catch(err => console.log(err))
     }
 
@@ -30,8 +33,6 @@ class BeachList extends Component {
 
         return (
             <Container>
-
-                <h1>Playas Chulas</h1>
 
                 {this.state.beaches.length ? (
                     <Row>
@@ -48,4 +49,4 @@ class BeachList extends Component {
     }
 }
 
-export default BeachList
+export default BeachCommunityList

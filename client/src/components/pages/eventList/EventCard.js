@@ -1,10 +1,11 @@
+// ----- REACT --------
 import React from 'react'
-
+import { Link } from 'react-router-dom'
+// -------- CSS --------
+import './event-card.css'
+// ------- BOOTSTRAP ----------
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
-import './event-card.css'
-
-import { Link } from 'react-router-dom'
 
 const EventCard = ({ title, imgurl, _id,dateevent }) => {
     return (
