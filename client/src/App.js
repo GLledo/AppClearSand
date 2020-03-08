@@ -1,10 +1,10 @@
+// --------- REACT ----------
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-import './App.css';
-
 import {Switch, Route, Redirect } from 'react-router-dom'
-
+// ------- BOOTSTRAP --------
+import 'bootstrap/dist/css/bootstrap.min.css';
+//----- CSS -------
+import './App.css';
 // ----- UI COMPONENT ----
 import NavBar from './components/ui/Navbar'
 import Signup from './components/pages/auth/signup/Signup'
@@ -14,7 +14,7 @@ import BeachDetails from './components/pages/beachDetails/BeachDeatils'
 import EventDetails from './components/pages/eventDetails/EventDetails'
 import UserList from './components/pages/userList/UserList'
 import BeachCommunityList from './components/pages/beachCommunityList/BeachCommunityList'
-
+// ----- SERVICES --------
 import AuthServices from './services/auth.services'
 
 class App extends Component {
