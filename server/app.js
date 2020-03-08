@@ -15,11 +15,11 @@ require('./configs/passport.config')(app)
 require('./configs/passport')(app)
 
 // URLS
-app.use('/api/', require('./routes/index.routes'))
 app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/beach', require('./routes/beach.routes'))
 app.use('/api/event', require('./routes/event.routes'))
 app.use('/api/files', require('./routes/files.routes.js'))
+app.use('/api/profile', require('./routes/profile.routes'))
 
 //heroku
 app.use((req,res) => {

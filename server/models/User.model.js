@@ -9,6 +9,7 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Event'
   }],
+  imgBg: String,
   comeup:[{
     type: Schema.Types.ObjectId,
     ref: 'Event'

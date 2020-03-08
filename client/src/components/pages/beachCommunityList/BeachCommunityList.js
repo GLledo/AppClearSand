@@ -22,10 +22,7 @@ class BeachCommunityList extends Component {
 
     getAllComunidad = () => {
         this.beachServices.getAllComunidad(this.props.match.params.comunidad)
-            .then(allBeaches => {
-                console.log(allBeaches, 'las bitches')
-                this.setState({ beaches: allBeaches }, ()=> console.log(allBeaches, 'las bitches, 2'))
-            })
+            .then(allBeaches => this.setState({ beaches: allBeaches }))
             .catch(err => console.log(err))
     }
 

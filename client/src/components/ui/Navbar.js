@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import './Nav-bar.css'
+
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Form from 'react-bootstrap/Form'
@@ -7,7 +9,6 @@ import Button from 'react-bootstrap/Button'
 import FormControl from 'react-bootstrap/FormControl'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 
-import BeachesServices from '../../services/beach.services'
 import AuthServices from '../../services/auth.services'
 
 import { Link } from 'react-router-dom'
@@ -16,15 +17,12 @@ class Navigation extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            beaches: []
-        }
-        this.services = new AuthServices()
-        this.servicesBeaches = new BeachesServices()
+        this.state = {}
+        this.authServices = new AuthServices()
     }
 
     logout = () => {
-        this.services.logout()
+        this.authServices.logout()
             .then(response => this.props.setTheUser(false))
             .catch(err => console.log(err))
     }

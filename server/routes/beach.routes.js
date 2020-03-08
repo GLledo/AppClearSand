@@ -8,7 +8,7 @@ router.get('/getFiveBeaches', (req, res, next) => {
   Beach.find()
   .then(allBeaches => {
         const arrBeach = []
-        for(let i = 0; i < 5; i++){  arrBeach.push(allBeaches[Math.floor(Math.random()*allBeaches.length)])}
+        for(let i = 0; i < 5; i++){arrBeach.push(allBeaches[Math.floor(Math.random()*allBeaches.length)])}
         res.json(arrBeach)
     })
   .catch(err => console.log(err))
@@ -26,7 +26,6 @@ router.get('/getOneBeach/:id', (req, res, next) => {
 
 router.get('/getAllComunidad/:comunidad' , (req, res, next) => {
 
-  console.log(req.params.comunidad)
 
   Beach.find({
     "Comunidad_Autonoma": {
@@ -34,10 +33,7 @@ router.get('/getAllComunidad/:comunidad' , (req, res, next) => {
         $options: 'i'
     }
   })
-  .then(allBeaches => {
-    console.log(allBeaches)
-    res.json(allBeaches)
-  })
+  .then(allBeaches => res.json(allBeaches))
   .catch(err => console.log(err))
 
 })

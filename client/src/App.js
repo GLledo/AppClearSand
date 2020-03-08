@@ -14,6 +14,7 @@ import BeachDetails from './components/pages/beachDetails/BeachDeatils'
 import EventDetails from './components/pages/eventDetails/EventDetails'
 import UserList from './components/pages/userList/UserList'
 import BeachCommunityList from './components/pages/beachCommunityList/BeachCommunityList'
+import Profile from './components/pages/profile/Profile'
 // ----- SERVICES --------
 import AuthServices from './services/auth.services'
 
@@ -54,6 +55,7 @@ class App extends Component {
               <Route path="/detalles/:id" render={props => this.state.loggedInUser ? <BeachDetails {...props} loggedInUser={this.state.loggedInUser}/> : <Redirect to="/" />} />
               <Route path="/evento-usuarios/:id" render={props => this.state.loggedInUser ? <UserList {...props} loggedInUser={this.state.loggedInUser}/> : <Redirect to="/" />} />
               <Route path="/comunidad/:comunidad" render={props => this.state.loggedInUser ? <BeachCommunityList {...props} loggedInUser={this.state.loggedInUser}/> : <Redirect to="/" />} />
+              <Route path="/profile" render={props => this.state.loggedInUser ? <Profile {...props} loggedInUser={this.state.loggedInUser}/>: <Redirect to="/" />} />
             </>
           ) : (
               <Redirect to="/" />

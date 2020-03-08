@@ -58,6 +58,7 @@ router.post('/new', (req, res, next) => {
         let eventComeUp = {}
         theEvent.userid.includes(req.user._id) ? eventComeUp = {$pull: {userid: req.user._id}} : eventComeUp = {$push: {userid: req.user._id}}  
         return Event.findByIdAndUpdate(req.params.id, eventComeUp, {new: true})
+      
       })
                         
     Promise.all([promise1,promise2])

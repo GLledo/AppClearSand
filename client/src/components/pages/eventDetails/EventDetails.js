@@ -48,15 +48,9 @@ class EventDetails extends Component {
 
                 <Link to={`/evento-usuarios/${this.state.event._id}`}>Link para ver los ususarios apuntados</Link>
                 <button onClick={this.postEventAddUser}>Apuntarse evento</button>
-                {/* {this.state.beach.event && <EventList arr={this.state.beach.event}/>} */}
-
             </Container>
         )
     }
 }
-
-// TO-DO
-// {this.props.loggedInUser && <Button className="mb-20" variant="dark" onClick={this.openModal}></Button>}
-
 
 export default EventDetails
