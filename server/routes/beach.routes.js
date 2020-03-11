@@ -2,6 +2,7 @@ const express = require('express');
 const router  = express.Router();
 const Beach = require('../models/Beach.model')
 const Event = require('../models/Event.model')
+let moment = require('moment')
 
 router.get('/getFiveBeaches', (req, res, next) => {
   
@@ -18,15 +19,20 @@ router.get('/getFiveBeaches', (req, res, next) => {
 router.get('/getOneBeach/:id', (req, res, next) => {
 
   Beach.findById(req.params.id)
-    .populate("event")
-    .then(theBeach => res.json(theBeach))
+    .populate({
+      path : 'event',
+      populate : {
+        path : 'useridcreator'
+      }
+    })
+    .then(theBeach =>res.json(theBeach))
     .catch(err => console.log(err))
 
 })
 
 router.get('/getAllComunidad/:comunidad' , (req, res, next) => {
 
-
+ console.log("aqui entra bien")
   Beach.find({
     "Comunidad_Autonoma": {
         $regex: `.*${req.params.comunidad}.*`,

@@ -4,7 +4,7 @@ const Schema   = mongoose.Schema
 const userSchema = new Schema({
   username: String,
   password: String,
-  imgUrl: String,
+  imgurl: String,
   property:[{
     type: Schema.Types.ObjectId,
     ref: 'Event'
@@ -13,7 +13,8 @@ const userSchema = new Schema({
   comeup:[{
     type: Schema.Types.ObjectId,
     ref: 'Event'
-  }]
+  }],
+  bio: String
 }, {
   timestamps: {
     createdAt: 'created_at',

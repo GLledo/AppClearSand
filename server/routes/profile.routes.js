@@ -2,35 +2,32 @@ const express = require("express")
 const router = express.Router()
 const User = require("../models/User.model")
 
-router.get('/edit-user', (req, res, next) => {
+router.get('/edit-user/:id', (req, res, next) => {
 
-    const userId = req.user.id
-  
+    const userId = req.params.id
+    
     User.findById(userId)
     .then(theUser => res.json(theUser))
-    .catch(err => console.log(err))
+    .catch(err => next(err))
   })
 
-router.post('/edit-user/:id', (req, res, next) => {
-
-const userId = req.params.id
-const picture = req.file.url
-const { username } = req.body
+router.post('/edit', (req, res, next) => {
   
-User.findByIdAndUpdate(userId, { username, picture })
-    .then(theUser => res.json(theUser))
-    .catch(err => console.log(err))
-  })
+  const {username, bio, imgurl}  = req.body
+  
+  User.findByIdAndUpdate(req.user._id, { username, bio, imgurl } , {new : true})
+      .then(theUser =>res.json(theUser))
+      .catch(err => next(err))
+    })
   
 router.get('/' , (req, res, next) => {
     
-    console.log(req.user._id)
     User.findById(req.user._id)
       .populate('property')
       .populate('comeup')
       .then(theUser =>res.json(theUser))
-      .catch(err => console.log(err))
+      .catch(err => next(err))
 
 })
-  //, uploadCloud.single('picture')
+
 module.exports = router

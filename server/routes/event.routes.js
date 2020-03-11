@@ -4,20 +4,23 @@ const router  = express.Router();
 const User = require('../models/User.model')
 const Event = require('../models/Event.model')
 const Beach = require('../models/Beach.model')
+const Comment = require('../models/Comment.model')
+
+let moment = require('moment')
+let date = Date.now();
 
 router.post('/new', (req, res, next) => {
 
     const {imgurl, description, title, dateevent} = req.body.event
-    const {useridcreator} = req.user._id
     const {beach} = req.body.id
-    
+
     const user = {
-      useridcreator,
+      useridcreator: req.user._id,
       imgurl,
       description,
       beach,
       title,
-      dateevent
+      dateevent: new Date (moment(new Date(dateevent)).format('YYYY-MM-DD'))
     }
 
     Event.create(user)
@@ -32,16 +35,18 @@ router.post('/new', (req, res, next) => {
       const message = {msg: "Tu id de evento se ha guardado en tu usuario y en la playa"}
         res.status(200).json(message)
       })
-    .catch(err => console.log(err))
+    .catch(err => next(err))
 
   })
 
   router.get('/getOneEvent/:id', (req, res, next) => {
 
     Event.findById(req.params.id)
+      .populate('useridcreator')
       .populate({ path: "userid", select: "username" })
+      .populate('comment')
       .then(theEvent => res.json(theEvent))
-      .catch(err => console.log(err))
+      .catch(err => next(err))
 
   })
 
@@ -66,10 +71,21 @@ router.post('/new', (req, res, next) => {
         const message = {msg: "Tu id de evento se ha guardado en tu usuario y en el evento se ha guardado tu id usuario"}
         res.status(200).json(message)
       })
-      .catch(err => console.error(err))
+      .catch(err => next(err))
     
   })
 
-  
+  router.get('/getFiveEvents', (req, res, next) => {
+
+    Event.find({dateevent : { $gte: moment(new Date(date)).format('YYYY-MM-DD')}}).sort({dateevent: 1})
+      .populate({ path: "userid", select: "username" })
+      .populate('useridcreator')
+      .then(allEvent => {
+        const arrEvent = []
+        for(let i = 0; i < 5; i++){arrEvent.push(allEvent[i])}
+        res.json(arrEvent)})
+      .catch(err => next(err))
+
+  })
 
 module.exports = router
