@@ -33,24 +33,24 @@ class Navigation extends Component {
 
             this.props.loggedInUser ?
                 (
-                    <Navbar bg="dark color-bg" expand="lg" variant="dark">
-                        <Navbar.Brand ><Link to="/"><img src='../../../IconoAlfa.svg' alt={this.props.loggedInUser.username} className='img-profile'/>AppClearSand</Link></Navbar.Brand>
+                    <Navbar className='color-bg' expand="lg" variant="dark">
+                        <Navbar.Brand ><Link to="/"><img src='../../../IconoAlfa.svg' alt={this.props.loggedInUser.username} className='img-profile'/></Link></Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <NavDropdown title="Comunidades autónomas" id="collasible-nav-dropdown">
+                        <NavDropdown className='dropdown' title="Comunidades" id="collasible-nav-dropdown">
                             {this.state.comunidad.map(elm =><NavDropdown.Item ><Link to={`/comunidad/${elm}`} key={elm._id}>{elm}</Link></NavDropdown.Item>)}
                         </NavDropdown>
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ml-auto">
                                 <NavItem><Link to="/profile"><img src={this.props.loggedInUser.imgurl} alt={this.props.loggedInUser.username} className='img-profile'/></Link></NavItem>
                                 <Nav.Link ><Link to="/profile">{this.props.loggedInUser.username}</Link></Nav.Link>
-                                <Nav.Link onClick={this.logout}>Cerrar sesión</Nav.Link>
+                                <Nav.Link className='color-close' onClick={this.logout}>Cerrar sesión</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
                 )
                 :
                 (
-                    <Navbar bg="dark" expand="lg" variant="dark">
+                    <Navbar className='color-bg' expand="lg" variant="dark">
                         <Navbar.Brand ><Link to="/">AppClearSand</Link></Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">

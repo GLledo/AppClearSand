@@ -23,6 +23,7 @@ class CommentForm extends Component {
         this.commentServices.postComment(this.state.comment)
             .then(updatedEvent => this.props.refreshEvent(updatedEvent)) 
             .catch(err => console.log(err))
+        this.setState({comment: {text: '', event: this.props.event}})
     }
 
     handleChange = e => {

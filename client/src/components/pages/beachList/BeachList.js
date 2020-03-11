@@ -29,9 +29,7 @@ class BeachList extends Component {
     render() {
 
         return (
-            <Container>
-
-                <h1>Playas Chulas</h1>
+            <Container className="padding">
 
                 {this.state.beaches.length ? (
                     <Row>

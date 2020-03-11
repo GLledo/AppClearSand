@@ -22,8 +22,6 @@ class EventList extends Component {
         return (
             <Container>
 
-                <h1>Eventos</h1>
-
                 {this.state.events.arr.length ? (
                     <Row>
                         {this.state.events.arr.map(elm => <EventCard key={elm._id} {...elm} />)}

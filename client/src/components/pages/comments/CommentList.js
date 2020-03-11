@@ -18,7 +18,7 @@ class CommentList extends Component {
     componentDidUpdate = (prevProps) =>{ if (this.props !== prevProps)this.setState({comments: this.props})}
 
     render() { 
-
+        
         return (
             <Container>
 
@@ -26,7 +26,8 @@ class CommentList extends Component {
 
                 {this.state.comments.arr.length ? (
                     <Row>
-                        {this.state.comments.arr.map(elm => <CommentCard key={elm._id} {...elm} />)}
+                        {this.state.comments.arr.map(elm => {
+                            return <CommentCard key={elm._id} {...elm} />})}
                     </Row>
                 )
                     :

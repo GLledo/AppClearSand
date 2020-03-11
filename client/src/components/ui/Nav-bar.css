@@ -4,5 +4,25 @@
     border-radius: 50px;
 }
 .color-bg{
-    background-color: burlywood;
+    background-color: rgb(215,193,180);
 }
+
+a {
+    color: rgb(128,116,101)
+}
+
+a:hover{
+    text-decoration: none;
+    color: rgb(128,116,101);
+}
+
+.color-close{
+    color: rgb(128,116,101)
+}
+
+
+/* rgb(213,109,51)
+
+224,222,223
+
+215,193,180 */

@@ -8,6 +8,8 @@ import EventList from '../eventList/EventList'
 
 import Container from 'react-bootstrap/Container'
 
+import './home.css'
+
 class Home extends Component {
 
     constructor(props) {
@@ -32,9 +34,17 @@ class Home extends Component {
 
         return (
         
-                <Container>
-                    <BeachList/>
+                <Container className='text'>
+
+                   
+                    <h1 className="padding ">Próximos eventos</h1>
+
                     {this.state.events && <EventList arr={this.state.events}/>}
+
+                    <h1 className="padding" >Playas recomendadas</h1>
+
+                    <BeachList/>
+
                 </Container>
                
         )

@@ -9,13 +9,13 @@ import Card from 'react-bootstrap/Card'
 
 const BeachCard = ({ Nombre, urlImagen, _id , Provincia}) => {
     return (
-        <Col md={4}>
+        <Col md={4} className='paddin'>
             <Card className="card-beach">
                 <Link to={`/detalles/${_id}`}>
                     <Card.Img variant="top" src={urlImagen} />
                 </Link>
                 <Card.Body>
-                    <Card.Title>{Nombre}</Card.Title>
+                    <Card.Text>{Nombre}</Card.Text>
                     <hr></hr>
                     <p>{Provincia}</p>
                 </Card.Body>

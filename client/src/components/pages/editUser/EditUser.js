@@ -29,6 +29,7 @@ class EditUser extends Component {
         this.profileServices.postUserEdit(this.state.user)
             .then(userUpdated => this.props.setTheUser(userUpdated))
             .catch(err => console.log(err))
+            this.props.history.push('/profile')
     }
 
     handleChange = e => {

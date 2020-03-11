@@ -44,7 +44,12 @@ router.post('/new', (req, res, next) => {
     Event.findById(req.params.id)
       .populate('useridcreator')
       .populate({ path: "userid", select: "username" })
-      .populate('comment')
+      .populate({
+        path : 'comment',
+        populate : {
+          path : 'userid'
+        }
+      })
       .then(theEvent => res.json(theEvent))
       .catch(err => next(err))
 

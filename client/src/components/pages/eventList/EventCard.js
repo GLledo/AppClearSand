@@ -10,9 +10,8 @@ import Card from 'react-bootstrap/Card'
 import Moment from 'react-moment';
 
 const EventCard = props => {
-    console.log(props)
     return (
-        <Col md={12}>
+        <Col md={12} className='padding'>
             <Card className="card-beach">
                 <Link to={`/detalles-evento/${props._id}`}>
                     <Card.Img variant="top" src={props.imgurl} />

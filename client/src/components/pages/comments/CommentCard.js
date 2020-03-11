@@ -7,8 +7,6 @@ import Card from 'react-bootstrap/Card'
 
 const CommentCard = (props) => {
     
-    console.log(props)
-
     return (
         
         <Col md={12}>
