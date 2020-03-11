@@ -7,16 +7,20 @@ import './event-card.css'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 
-const EventCard = ({ title, imgurl, _id,dateevent }) => {
+import Moment from 'react-moment';
+
+const EventCard = props => {
+    console.log(props)
     return (
         <Col md={12}>
             <Card className="card-beach">
-                <Link to={`/detalles-evento/${_id}`}>
-                    <Card.Img variant="top" src={imgurl} />
+                <Link to={`/detalles-evento/${props._id}`}>
+                    <Card.Img variant="top" src={props.imgurl} />
                 </Link>
                 <Card.Body>
-                    <Card.Title>{title}</Card.Title>
-                    <Card.Title>{dateevent}</Card.Title>
+                    <Card.Title>{props.title}</Card.Title>
+                    <Card.Title> <Moment format="YYYY-MM-DD">{props.dateevent}</Moment></Card.Title>
+                    <Card.Title>{props.useridcreator.username}</Card.Title>
                     <hr></hr>
                 </Card.Body>
             </Card>

@@ -11,6 +11,7 @@ export default class Services {
     }
 
     getUserEdit = id => this.service.get(`/edit-user/${id}`).then(response => response.data)
-    postUserEdit = id => this.service.post(`/edit-user/${id}`).then(response => response.data)
+    postUserEdit = user  => this.service.post(`/edit` , user).then(response => response.data)
     getUser = () => this.service.get('/').then(response => response.data)
+    
 }

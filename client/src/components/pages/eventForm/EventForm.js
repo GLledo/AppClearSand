@@ -12,16 +12,16 @@ class EventForm extends Component {
 
     constructor(props) {
         super(props)
-        this.eventsServices = new EventsServices()
-        this.filesServices = new FilesServices()
         this.state = {
             event: {
                 imgurl: '',
                 description: '',
                 title:'',
-                dateevent:new Date(),
+                dateevent: new Date(),
             },
         }
+        this.eventsServices = new EventsServices()
+        this.filesServices = new FilesServices()
     }
 
     finishAction = () => {
@@ -30,6 +30,9 @@ class EventForm extends Component {
     }
 
     postEvent = () => {
+        console.log(this.state.event.dateevent)
+        console.log(typeof this.state.event.dateevent)
+
         this.eventsServices.postEvent(this.state.event,this.props.beachId)
             .then(() => this.finishAction())
             .catch(err => console.log(err))
@@ -48,7 +51,7 @@ class EventForm extends Component {
     }
 
     onChange = date => this.setState({  
-        event: {...this.state.event, dateevent: date }
+        event: {...this.state.event, dateevent: date}
     })
 
     handleFileUpload = e => {

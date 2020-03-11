@@ -9,12 +9,13 @@ import './App.css';
 import NavBar from './components/ui/Navbar'
 import Signup from './components/pages/auth/signup/Signup'
 import Login from './components/pages/auth/login/Login'
-import BeachList from './components/pages/beachList/BeachList'
 import BeachDetails from './components/pages/beachDetails/BeachDeatils'
 import EventDetails from './components/pages/eventDetails/EventDetails'
 import UserList from './components/pages/userList/UserList'
 import BeachCommunityList from './components/pages/beachCommunityList/BeachCommunityList'
 import Profile from './components/pages/profile/Profile'
+import EditUser from './components/pages/editUser/EditUser'
+import Home from './components/pages/home/Home'
 // ----- SERVICES --------
 import AuthServices from './services/auth.services'
 
@@ -32,6 +33,7 @@ class App extends Component {
 
 
   setTheUser = userObj => this.setState({ loggedInUser: userObj })
+
   fetchUser = () => {
     this.authServices.loggedin()
       .then(theUser => this.setState({ loggedInUser: theUser }))
@@ -39,13 +41,12 @@ class App extends Component {
   }
 
   render() {
-    
     return (
       <>
         <NavBar setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />
 
         <Switch>
-          <Route exact path="/" render={() => <BeachList setTheUser={this.setTheUser} />}/>
+          <Route exact path="/" render={props => <Home setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser}/>}/>
           <Route path="/signup" render={() => <Signup setTheUser={this.setTheUser} />} />
           <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
 
@@ -56,6 +57,8 @@ class App extends Component {
               <Route path="/evento-usuarios/:id" render={props => this.state.loggedInUser ? <UserList {...props} loggedInUser={this.state.loggedInUser}/> : <Redirect to="/" />} />
               <Route path="/comunidad/:comunidad" render={props => this.state.loggedInUser ? <BeachCommunityList {...props} loggedInUser={this.state.loggedInUser}/> : <Redirect to="/" />} />
               <Route path="/profile" render={props => this.state.loggedInUser ? <Profile {...props} loggedInUser={this.state.loggedInUser}/>: <Redirect to="/" />} />
+              <Route path="/edit-user/:id" render={props => this.state.loggedInUser ? <EditUser {...props} setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser}/>: <Redirect to="/" />} />
+
             </>
           ) : (
               <Redirect to="/" />

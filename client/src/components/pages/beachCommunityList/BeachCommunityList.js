@@ -26,6 +26,10 @@ class BeachCommunityList extends Component {
             .catch(err => console.log(err))
     }
 
+    componentDidUpdate(prevProps) {
+        return prevProps.match.params.comunidad !== this.props.match.params.comunidad ? this.getAllComunidad() : null
+    }
+
     render() {
 
         return (

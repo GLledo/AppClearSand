@@ -8,12 +8,17 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
+import Moment from 'react-moment';
+
+import CommentForm from '../comments/CommentForm'
+import CommentList from '../comments/CommentList'
+
 class EventDetails extends Component {
 
     constructor(props) {
         super(props)
         this.state = { 
-            event: {}
+            event: null
          }
         this.eventServices = new EventServices()
     }
@@ -32,24 +37,37 @@ class EventDetails extends Component {
             .catch(err => console.log(err))
     }
 
-    render() {
-        return (
-            <Container >
-                <h1>{this.state.event.title}</h1>
-                <p>{this.state.event.dateevent}</p>
-                <Row>
-                    <Col md={{ span: 4, offset: 1 }}>
-                        <p>{this.state.event.description}</p>
-                    </Col>
-                    <Col md={{ span: 5, offset: 1 }}>
-                        <img src={this.state.event.imgurl} alt={this.state.event.title}></img>
-                    </Col>
-                </Row>
+    refreshEvent = (event) => {
+        this.setState({event: event})
+    }
 
-                <Link to={`/evento-usuarios/${this.state.event._id}`}>Link para ver los ususarios apuntados</Link>
-                <button onClick={this.postEventAddUser}>Apuntarse evento</button>
-            </Container>
-        )
+    render() {
+        console.log(this.state)
+        if(this.state.event){
+
+            return (
+    
+                <Container >
+                    <h1>{this.state.event.title}</h1>
+                    <Moment format="YYYY-MM-DD">{this.state.event.dateevent}</Moment>
+                    <Row>
+                        <Col md={{ span: 4, offset: 1 }}>
+                            <p>{this.state.event.description}</p>
+                        </Col>
+                        <Col md={{ span: 5, offset: 1 }}>
+                            <img src={this.state.event.imgurl} alt={this.state.event.title}></img>
+                        </Col>
+                    </Row>
+                    <Link to={`/evento-usuarios/${this.state.event._id}`}>Link para ver los ususarios apuntados</Link>
+                    <button onClick={this.postEventAddUser}>Apuntarse evento</button>
+    
+                    {this.state.event.comment && <CommentList arr={this.state.event.comment}/>}
+    
+                    <CommentForm event={this.state.event._id} refreshEvent={this.refreshEvent}></CommentForm>
+    
+                </Container>
+            )
+        } else return null
     }
 }
 
