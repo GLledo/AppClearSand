@@ -11,7 +11,7 @@ import Moment from 'react-moment';
 
 const EventCard = props => {
     return (
-        <Col md={12} className='padding'>
+        <Col md={12} className='padding text-center'>
             <Card className="card-beach">
                 <Link to={`/detalles-evento/${props._id}`}>
                     <Card.Img variant="top" src={props.imgurl} />

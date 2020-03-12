@@ -10,6 +10,8 @@ import Card from 'react-bootstrap/Card'
 // ----------- PAGES COMPONENTS ---------
 import EventList from '../eventList/EventList'
 
+import './profile.css'
+
 class Profile extends Component {
 
     constructor(props) {
@@ -38,13 +40,13 @@ class Profile extends Component {
                         <Card className="text-center">
                             <Card.Header></Card.Header>
                             <Card.Body>
+                                <img src={this.state.user.imgurl} className='img-prof' alt={this.state.user.username}></img>
                                 <Card.Title></Card.Title>
                                 <Card.Text>
                                     {this.state.user.bio}  
                                 </Card.Text>
-                            
                                 </Card.Body>
-                                <Card.Footer className="text-muted"><Link to={`/edit-user/${this.state.user._id}`}>{this.state.user.username}</Link></Card.Footer>
+                                <Card.Footer className="text-muted"><Link to={`/edit-user/${this.state.user._id}`} className='text'>{this.state.user.username}</Link></Card.Footer>
                         </Card>
                     </Card.Body>
                 </Card>

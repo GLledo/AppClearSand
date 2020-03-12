@@ -37,7 +37,7 @@ class Home extends Component {
                 <Container className='text'>
 
                    
-                    <h1 className="padding ">Próximos eventos</h1>
+                    <h1 className="padding">Próximos eventos</h1>
 
                     {this.state.events && <EventList arr={this.state.events}/>}
 

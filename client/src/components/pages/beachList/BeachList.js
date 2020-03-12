@@ -8,6 +8,8 @@ import BeachCard from './BeachCard'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 
+import './beach-list.css'
+
 class BeachList extends Component {
 
     constructor(props) {

@@ -9,7 +9,7 @@ import Card from 'react-bootstrap/Card'
 
 const BeachCard = ({ Nombre, urlImagen, _id , Provincia}) => {
     return (
-        <Col md={4} className='paddin'>
+        <Col md={4} className='paddin text-center'>
             <Card className="card-beach">
                 <Link to={`/detalles/${_id}`}>
                     <Card.Img variant="top" src={urlImagen} />
