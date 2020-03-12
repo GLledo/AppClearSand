@@ -4,7 +4,10 @@ const Schema   = mongoose.Schema
 const userSchema = new Schema({
   username: String,
   password: String,
-  imgurl: String,
+  imgurl: {
+    type: String,
+    default: 'https://cdn2.iconfinder.com/data/icons/4web-3/139/header-account-image-line-512.png'
+  },
   property:[{
     type: Schema.Types.ObjectId,
     ref: 'Event'
@@ -14,7 +17,10 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Event'
   }],
-  bio: String
+  bio: {
+    type: String,
+    default: '.....'
+  },
 }, {
   timestamps: {
     createdAt: 'created_at',

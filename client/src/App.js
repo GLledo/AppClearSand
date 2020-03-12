@@ -52,7 +52,7 @@ class App extends Component {
 
           {this.state.loggedInUser ? (
             <>
-              <Route path="/detalles-evento/:id" render={props => this.state.loggedInUser ? <EventDetails {...props} loggedInUser={this.state.loggedInUser}/>: <Redirect to="/" />} />
+              <Route path="/detalles-evento/:id" render={props => this.state.loggedInUser ? <EventDetails {...props} loggedInUser={this.state.loggedInUser} setTheUser={this.setTheUser}/>: <Redirect to="/" />} />
               <Route path="/detalles/:id" render={props => this.state.loggedInUser ? <BeachDetails {...props} loggedInUser={this.state.loggedInUser}/> : <Redirect to="/" />} />
               <Route path="/evento-usuarios/:id" render={props => this.state.loggedInUser ? <UserList {...props} loggedInUser={this.state.loggedInUser}/> : <Redirect to="/" />} />
               <Route path="/comunidad/:comunidad" render={props => this.state.loggedInUser ? <BeachCommunityList {...props} loggedInUser={this.state.loggedInUser}/> : <Redirect to="/" />} />

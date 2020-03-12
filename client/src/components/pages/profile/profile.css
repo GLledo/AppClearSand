@@ -7,3 +7,13 @@
 .text{
     color: black;
 }
+
+.card-size{
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 5%;
+}   
+
+.space{
+    margin: 3% auto;
+}

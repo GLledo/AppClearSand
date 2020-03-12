@@ -22,10 +22,10 @@ class CommentList extends Component {
         return (
             <Container>
 
-                <h1>Comentarios</h1>
+                <h1 className='padding'>Comentarios</h1>
 
                 {this.state.comments.arr.length ? (
-                    <Row>
+                    <Row className='padding'>
                         {this.state.comments.arr.map(elm => {
                             return <CommentCard key={elm._id} {...elm} />})}
                     </Row>

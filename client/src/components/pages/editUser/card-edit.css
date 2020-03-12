@@ -1,0 +1,13 @@
+.card-edit{
+    width: 40%;
+    margin-top: 10%;
+    padding: 3% 3%;
+    background-color: rgb(215,193,180);
+    border-radius: 8%;
+}   
+
+.button-color{
+    background-color: rgb(224,222,223);
+    border-color: rgb(224,222,223);
+    color: black;
+}

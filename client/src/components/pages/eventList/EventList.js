@@ -20,10 +20,10 @@ class EventList extends Component {
     render() { 
 
         return (
-            <Container>
+            <Container >
 
                 {this.state.events.arr.length ? (
-                    <Row>
+                    <Row className="justify-content-center">
                         {this.state.events.arr.map(elm => <EventCard key={elm._id} {...elm} />)}
                     </Row>
                 )

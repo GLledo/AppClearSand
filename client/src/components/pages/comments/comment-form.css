@@ -1,0 +1,16 @@
+.form-size-comment{
+    width: 20%;
+    padding-left: 1.4%;
+    padding-top: 2%;
+}
+.line-form{
+    display: flex;
+}
+
+.padding-right{
+    padding-right: 2%;
+}
+.button-sice{
+    height: 1%;
+    margin-top: 2%;
+}

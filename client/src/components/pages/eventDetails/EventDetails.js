@@ -8,6 +8,8 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
+import './event-details.css'
+
 import Moment from 'react-moment';
 
 import CommentForm from '../comments/CommentForm'
@@ -27,7 +29,7 @@ class EventDetails extends Component {
 
     postEventAddUser = () => {
         this.eventServices.postEventAddUser(this.state.event._id)
-            .then(x => console.log(x))//TO-DO como mostrar al ususario que se ha apuntado 
+            .then(userAdd => this.props.setTheUser(userAdd))//TO-DO como mostrar al ususario que se ha apuntado 
             .catch(err => console.log(err))
     }
 
@@ -37,9 +39,7 @@ class EventDetails extends Component {
             .catch(err => console.log(err))
     }
 
-    refreshEvent = (event) => {
-        this.setState({event: event})
-    }
+    refreshEvent = (event) => this.setState({event: event})
 
     render() {
         if(this.state.event){
@@ -47,18 +47,18 @@ class EventDetails extends Component {
             return (
     
                 <Container >
-                    <h1>{this.state.event.title}</h1>
+                    <h1 className='padding-beach'>{this.state.event.title}</h1>
                     <Moment format="YYYY-MM-DD">{this.state.event.dateevent}</Moment>
                     <Row>
-                        <Col md={{ span: 4, offset: 1 }}>
+                        <Col md={6}>
                             <p>{this.state.event.description}</p>
                         </Col>
-                        <Col md={{ span: 5, offset: 1 }}>
-                            <img src={this.state.event.imgurl} alt={this.state.event.title}></img>
+                        <Col md={6}>
+                            <img src={this.state.event.imgurl} alt={this.state.event.title} className='img-event-tam'></img>
                         </Col>
                     </Row>
-                    <Link to={`/evento-usuarios/${this.state.event._id}`}>Link para ver los ususarios apuntados</Link>
-                    <button onClick={this.postEventAddUser}>Apuntarse evento</button>
+                    <Link to={`/evento-usuarios/${this.state.event._id}`}>Ususarios apuntados</Link>
+                    <button onClick={this.postEventAddUser} className='ml-auto'>Apuntarse evento</button>
     
                     {this.state.event.comment && <CommentList arr={this.state.event.comment}/>}
     

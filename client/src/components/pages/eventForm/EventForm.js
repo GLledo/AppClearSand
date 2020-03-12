@@ -30,9 +30,6 @@ class EventForm extends Component {
     }
 
     postEvent = () => {
-        console.log(this.state.event.dateevent)
-        console.log(typeof this.state.event.dateevent)
-
         this.eventsServices.postEvent(this.state.event,this.props.beachId)
             .then(() => this.finishAction())
             .catch(err => console.log(err))
@@ -71,7 +68,7 @@ class EventForm extends Component {
     render() {
 
         return (
-            <Form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit} >
                 <Form.Group>
                     <Form.Label>Titulo</Form.Label>
                     <Form.Control type="text" name="title" value={this.state.event.title} onChange={this.handleChange} />
@@ -89,7 +86,7 @@ class EventForm extends Component {
                     <Calendar onChange={this.onChange} value={this.state.event.dateevent}/>
                 </div>
 
-                <Button variant="dark" type="submit">Crear el evento</Button>
+                <Button variant="dark" type="submit" >Crear el evento</Button>
             </Form>
         )
     }

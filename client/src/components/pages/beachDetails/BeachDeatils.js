@@ -40,7 +40,7 @@ class BeachDetails extends Component {
     render() {
         return (
             <Container className="beach-details" >
-                <h1>{this.state.beach.Nombre}</h1>
+                <h1 className='padding-beach'>{this.state.beach.Nombre}</h1>
                 <Row>
                     <Col md={{ span: 4, offset: 1 }}>
                         <p>{this.state.beach.Descripcion}</p>
@@ -53,9 +53,9 @@ class BeachDetails extends Component {
                     Crea un evento
                 </Button>
                 
-                <SimpleMap latitud={this.state.beach.Coordenada_Y} longitud={this.state.beach.Coordenada_X} name={this.state.beach.Nombre}></SimpleMap>
+                <SimpleMap className='padding-beach' latitud={this.state.beach.Coordenada_Y} longitud={this.state.beach.Coordenada_X} name={this.state.beach.Nombre}></SimpleMap>
 
-                <Modal show={this.state.showmodal} onHide={this.closeModal}>
+                <Modal show={this.state.showmodal} onHide={this.closeModal} className='padding-beach'>
                     <Modal.Body>
                         <h3>Crea un evento nuevo</h3>
                         <hr></hr>

@@ -61,6 +61,13 @@ router.post('/new', (req, res, next) => {
     req.user.comeup.includes(req.params.id) ? userComeUp = {$pull: {comeup: req.params.id}} : userComeUp = {$push: {comeup: req.params.id}}
     
     const promise1 = User.findByIdAndUpdate(req.user._id, userComeUp, {new: true})
+    .populate('property')
+    .populate({
+      path : 'comeup',
+      populate : {
+        path : 'useridcreator'
+      }
+    })
 
     const promise2 =  Event.findById(req.params.id )
       .then(theEvent => {
@@ -72,10 +79,7 @@ router.post('/new', (req, res, next) => {
       })
                         
     Promise.all([promise1,promise2])
-      .then(x => {
-        const message = {msg: "Tu id de evento se ha guardado en tu usuario y en el evento se ha guardado tu id usuario"}
-        res.status(200).json(message)
-      })
+      .then(x => res.json(x[0]))
       .catch(err => next(err))
     
   })

@@ -7,9 +7,14 @@ passport.serializeUser((loggedInUser, cb) => {
 
 passport.deserializeUser((userIdFromSession, cb) => {
   User.findById(userIdFromSession)
-    .then(userDocument => {
-      cb(null, userDocument);
-    })
+  .populate('property')
+  .populate({
+    path : 'comeup',
+    populate : {
+      path : 'useridcreator'
+    }
+  })
+    .then(userDocument => cb(null, userDocument))
     .catch(err => {
       cb(err);
     })

@@ -33,10 +33,14 @@ class Home extends Component {
     render() {
 
         return (
-        
+                <>
+                <Container fluid className= 'p-0 height bg-home' >
+                       
+                         <img className='img-home tam' src='https://media.giphy.com/media/7GHRDluBmx9O8/giphy.gif' alt="Img ocean"></img>
+                </Container>
                 <Container className='text'>
-
-                   
+                    
+                    
                     <h1 className="padding">Próximos eventos</h1>
 
                     {this.state.events && <EventList arr={this.state.events}/>}
@@ -46,6 +50,7 @@ class Home extends Component {
                     <BeachList/>
 
                 </Container>
+                </>
                
         )
     }

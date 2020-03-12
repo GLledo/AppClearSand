@@ -24,7 +24,12 @@ router.get('/' , (req, res, next) => {
     
     User.findById(req.user._id)
       .populate('property')
-      .populate('comeup')
+      .populate({
+        path : 'comeup',
+        populate : {
+          path : 'useridcreator'
+        }
+      })
       .then(theUser =>res.json(theUser))
       .catch(err => next(err))
 

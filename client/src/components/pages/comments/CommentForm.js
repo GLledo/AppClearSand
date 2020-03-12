@@ -6,6 +6,8 @@ import CommentServices from '../../../services/comment.services'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
+import './comment-form.css'
+
 class CommentForm extends Component {
 
     constructor(props) {
@@ -41,11 +43,11 @@ class CommentForm extends Component {
     render() {
 
         return (
-            <Form onSubmit={this.handleSubmit}>
-                <Form.Group>
+            <Form onSubmit={this.handleSubmit} className='line-form'>
+                <Form.Group className='form-size-comment padding-right'>
                     <Form.Control type="text" name="text" value={this.state.comment.text} onChange={this.handleChange} />
                 </Form.Group>
-                <Button variant="dark" type="submit">Comenta</Button>
+                <Button variant="dark" type="submit" className='button-sice'>Comenta</Button>
             </Form>
         )
     }

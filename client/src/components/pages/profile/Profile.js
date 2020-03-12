@@ -32,24 +32,26 @@ class Profile extends Component {
 
     render() {
         return (
-            <Container >
+            <Container className='text-center'>
                 
-                <Card>
+                <Card className='card-size'>
                 <Card.Img variant="top"  />
                      <Card.Body>
                         <Card className="text-center">
                             <Card.Header></Card.Header>
                             <Card.Body>
-                                <img src={this.state.user.imgurl} className='img-prof' alt={this.state.user.username}></img>
-                                <Card.Title></Card.Title>
+                                <img src={this.props.loggedInUser.imgurl} className='img-prof' alt={this.props.loggedInUser.username}></img>
+                                <hr></hr>
                                 <Card.Text>
-                                    {this.state.user.bio}  
+                                    {this.props.loggedInUser.bio}  
                                 </Card.Text>
                                 </Card.Body>
-                                <Card.Footer className="text-muted"><Link to={`/edit-user/${this.state.user._id}`} className='text'>{this.state.user.username}</Link></Card.Footer>
+                                <Card.Footer className="text-muted"><Link to={`/edit-user/${this.props.loggedInUser._id}`} className='text'>{this.props.loggedInUser.username}</Link></Card.Footer>
                         </Card>
                     </Card.Body>
                 </Card>
+                
+                <h1 className="space">Eventos en los que participas</h1>
 
                 {this.state.user.comeup && <EventList arr={this.state.user.comeup}/>}
             </Container>

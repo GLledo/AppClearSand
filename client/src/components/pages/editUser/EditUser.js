@@ -7,8 +7,9 @@ import FileServices from '../../../services/files.services'
 // --------- BOOTSTRAP --------
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
 // ----------- PAGES COMPONENTS ---------
-
+import './card-edit.css'
 class EditUser extends Component {
 
     constructor(props) {
@@ -59,23 +60,23 @@ class EditUser extends Component {
 
     render() {
         return (
-            <>
+            <Container className='card-edit'>
              <Form onSubmit={this.handleSubmit}>
                 <Form.Group>
                     <Form.Label>Nombre</Form.Label>
                     <Form.Control type="text" name="username" value={this.state.user.username}  onChange={this.handleChange} />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Descripcion</Form.Label>
+                    <Form.Label>Descripción</Form.Label>
                     <Form.Control type="text" name="bio" value={this.state.user.bio} onChange={this.handleChange} />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Imagen</Form.Label>
                     <Form.Control type="file" name="imgurl" onChange={this.handleFileUpload} />
                 </Form.Group>
-                <Button variant="dark" type="submit">Actualizar Usuario</Button>
+                <Button className='button-color' variant="dark" type="submit">Actualizar Usuario</Button>
              </Form>
-            </>
+            </Container>
         )
     }
 }
