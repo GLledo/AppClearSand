@@ -35,7 +35,7 @@ class Home extends Component {
         return (
                 <>
                 <Container fluid className= 'p-0 bg-home' >
-                    <h1 className='text-ocean'>Holaaxjwnjwnxjnwjxnwkjnxkjnwxkj</h1>
+                    <h1 className='text-ocean'>Cuidemos juntos nuestras playas</h1>
                 </Container>
                 <Container className='text'>
                     
