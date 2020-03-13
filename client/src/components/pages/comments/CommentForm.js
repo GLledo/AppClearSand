@@ -16,16 +16,21 @@ class CommentForm extends Component {
             comment: {
                 text: '',
                 event: props.event
-            }
+            },
+           
         }
         this.commentServices = new CommentServices()
     }
 
     postComment = () => {
-        this.commentServices.postComment(this.state.comment)
-            .then(updatedEvent => this.props.refreshEvent(updatedEvent)) 
-            .catch(err => console.log(err))
-        this.setState({comment: {text: '', event: this.props.event}})
+        if (this.state.comment.text){
+            this.commentServices.postComment(this.state.comment)
+                .then(updatedEvent => this.props.refreshEvent(updatedEvent)) 
+                .catch(err => console.log(err))
+            this.setState({comment: {text: '', event: this.props.event}})
+        }else{
+            alert('Introduce texto')
+        }
     }
 
     handleChange = e => {
@@ -47,7 +52,7 @@ class CommentForm extends Component {
                 <Form.Group className='form-size-comment padding-right'>
                     <Form.Control type="text" name="text" value={this.state.comment.text} onChange={this.handleChange} />
                 </Form.Group>
-                <Button variant="dark" type="submit" className='button-sice'>Comenta</Button>
+                 <Button variant="dark" type="submit" className='button-sice'>Comenta</Button>
             </Form>
         )
     }

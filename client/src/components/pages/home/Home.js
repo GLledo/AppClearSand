@@ -34,9 +34,8 @@ class Home extends Component {
 
         return (
                 <>
-                <Container fluid className= 'p-0 height bg-home' >
-                       
-                         <img className='img-home tam' src='https://media.giphy.com/media/7GHRDluBmx9O8/giphy.gif' alt="Img ocean"></img>
+                <Container fluid className= 'p-0 bg-home' >
+                    <h1 className='text-ocean'>Holaaxjwnjwnxjnwjxnwkjnxkjnwxkj</h1>
                 </Container>
                 <Container className='text'>
                     

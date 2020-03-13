@@ -33,7 +33,7 @@ class UserList extends Component {
         return (
             <Container>
 
-                <h1>Lista de Usuarios</h1>
+                <h1 className='padding'>Lista de Usuarios</h1>
 
                 {this.state.events.length ? (
                     <Row>

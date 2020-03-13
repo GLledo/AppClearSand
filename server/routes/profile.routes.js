@@ -18,7 +18,7 @@ router.post('/edit', (req, res, next) => {
   User.findByIdAndUpdate(req.user._id, { username, bio, imgurl } , {new : true})
       .then(theUser =>res.json(theUser))
       .catch(err => next(err))
-    })
+  })
   
 router.get('/' , (req, res, next) => {
     

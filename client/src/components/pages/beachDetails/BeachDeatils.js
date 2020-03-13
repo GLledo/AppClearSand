@@ -15,6 +15,7 @@ import EventForm from '../eventForm/EventForm'
 import EventList from '../eventList/EventList'
 import SimpleMap from '../googleMap/GoogleMapReact'
 
+import './beach-deatils.css'
 class BeachDetails extends Component {
 
     constructor(props) {
@@ -49,18 +50,23 @@ class BeachDetails extends Component {
                         <img src={this.state.beach.urlImagen} alt={this.state.beach.Name}></img>
                     </Col>
                 </Row>
-                <Button className="mb-20" variant="dark" onClick={this.openModal}> 
-                    Crea un evento
-                </Button>
-                
-                <SimpleMap className='padding-beach' latitud={this.state.beach.Coordenada_Y} longitud={this.state.beach.Coordenada_X} name={this.state.beach.Nombre}></SimpleMap>
+                <Container>
 
+                    <Button className="mb-2 padding-beach" variant="dark" onClick={this.openModal}> 
+                        Crea un evento
+                    </Button>
+                    
+                    <SimpleMap  latitud={this.state.beach.Coordenada_Y} longitud={this.state.beach.Coordenada_X} name={this.state.beach.Nombre}></SimpleMap>
+                
+                </Container>
                 <Modal show={this.state.showmodal} onHide={this.closeModal} className='padding-beach'>
+                    
                     <Modal.Body>
                         <h3>Crea un evento nuevo</h3>
                         <hr></hr>
                         <EventForm beachId={this.state.beach._id} closeModal={this.closeModal} refreshList={this.getBeachDetails} />
                     </Modal.Body>
+                
                 </Modal>
                 
                 {this.state.beach.event && <EventList arr={this.state.beach.event}/>}

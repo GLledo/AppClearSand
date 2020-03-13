@@ -7,6 +7,7 @@ import BeachCard from './BeachCard'
 // ---------- BOOTSTRAP ---------
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import Spinner from 'react-bootstrap/Spinner'
 
 import './beach-list.css'
 
@@ -39,8 +40,8 @@ class BeachList extends Component {
                     </Row>
                 )
                     :
-                    <p>CARGANDO...</p>
-
+                    
+                    <Spinner animation="grow" />
                 }
 
             </Container>

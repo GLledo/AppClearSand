@@ -5,16 +5,14 @@
     padding-top: 2%;
 }
 
-.img-home{
-    width: 100%;
-}
-
-.tam{
-    width: 100%;
+.bg-home{
     height: 500px;
+    background-image: url('https://media.giphy.com/media/7GHRDluBmx9O8/giphy.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.height{
-    height: 20%;
+.text-ocean{
+    text-align: center;
+    padding-top: 12%;
 }
-

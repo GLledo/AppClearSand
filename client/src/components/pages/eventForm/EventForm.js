@@ -18,18 +18,19 @@ class EventForm extends Component {
                 description: '',
                 title:'',
                 dateevent: new Date(),
-            },
+            }
         }
         this.eventsServices = new EventsServices()
         this.filesServices = new FilesServices()
     }
-
+    
     finishAction = () => {
         this.props.closeModal()
         this.props.refreshList()
     }
 
     postEvent = () => {
+        
         this.eventsServices.postEvent(this.state.event,this.props.beachId)
             .then(() => this.finishAction())
             .catch(err => console.log(err))
@@ -73,9 +74,9 @@ class EventForm extends Component {
                     <Form.Label>Titulo</Form.Label>
                     <Form.Control type="text" name="title" value={this.state.event.title} onChange={this.handleChange} />
                 </Form.Group>
-                <Form.Group>
+                <Form.Group controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Descripcion</Form.Label>
-                    <Form.Control type="text" name="description" value={this.state.event.description} onChange={this.handleChange} />
+                    <Form.Control as="textarea" rows="3" name="description" value={this.state.event.description} onChange={this.handleChange}/>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Imagen</Form.Label>

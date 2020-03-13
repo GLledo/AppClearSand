@@ -36,7 +36,7 @@ class Profile extends Component {
                 
                 <Card className='card-size'>
                 <Card.Img variant="top"  />
-                     <Card.Body>
+                     <Card.Body className='bg-color-card'>
                         <Card className="text-center">
                             <Card.Header></Card.Header>
                             <Card.Body>

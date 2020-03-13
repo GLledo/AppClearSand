@@ -39,6 +39,7 @@ class Navigation extends Component {
                         <NavDropdown className='dropdown' title="Comunidades" id="collasible-nav-dropdown">
                             {this.state.comunidad.map(elm =><NavDropdown.Item ><Link to={`/comunidad/${elm}`} key={elm._id}>{elm}</Link></NavDropdown.Item>)}
                         </NavDropdown>
+                        <Nav.Link><Link className='text-ocean' to={'/historico'}>Antiguos Eventos</Link></Nav.Link>
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ml-auto">
                                 <NavItem><Link to="/profile"><img src={this.props.loggedInUser.imgurl} alt={this.props.loggedInUser.username} className='img-profile'/></Link></NavItem>

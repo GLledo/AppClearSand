@@ -38,27 +38,34 @@ class EventDetails extends Component {
             .then(theEvent => this.setState({ event: theEvent }))
             .catch(err => console.log(err))
     }
-
+ 
     refreshEvent = (event) => this.setState({event: event})
 
     render() {
         if(this.state.event){
-
+            
             return (
     
                 <Container >
+                
                     <h1 className='padding-beach'>{this.state.event.title}</h1>
-                    <Moment format="YYYY-MM-DD">{this.state.event.dateevent}</Moment>
+
+                    {this.props.loggedInUser._id === this.state.event.useridcreator._id && <Link className="ml-auto" to={`/editar-evento/${this.state.event._id}`}>Editar evento</Link>}
+
                     <Row>
-                        <Col md={6}>
-                            <p>{this.state.event.description}</p>
+                        <Col md={6} >
+                            <text>{this.state.event.description}</text>
                         </Col>
                         <Col md={6}>
                             <img src={this.state.event.imgurl} alt={this.state.event.title} className='img-event-tam'></img>
                         </Col>
                     </Row>
-                    <Link to={`/evento-usuarios/${this.state.event._id}`}>Ususarios apuntados</Link>
-                    <button onClick={this.postEventAddUser} className='ml-auto'>Apuntarse evento</button>
+                    
+                    <Container className="d-flex flex-contain" > 
+                        <button onClick={this.postEventAddUser} >Apuntarse evento</button>
+                        <Moment className='ml-auto' format="YYYY-MM-DD">{this.state.event.dateevent}</Moment>
+                        <Link className="ml-auto" to={`/evento-usuarios/${this.state.event._id}`}>Ususarios apuntados</Link>
+                    </Container>
     
                     {this.state.event.comment && <CommentList arr={this.state.event.comment}/>}
     

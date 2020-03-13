@@ -43,7 +43,7 @@ router.post('/new', (req, res, next) => {
 
     Event.findById(req.params.id)
       .populate('useridcreator')
-      .populate({ path: "userid", select: "username" })
+      .populate({ path: "userid"})
       .populate({
         path : 'comment',
         populate : {
@@ -57,9 +57,11 @@ router.post('/new', (req, res, next) => {
 
   router.post('/addUser/:id', (req, res, next) => {
 
-    let userComeUp = {}
-    req.user.comeup.includes(req.params.id) ? userComeUp = {$pull: {comeup: req.params.id}} : userComeUp = {$push: {comeup: req.params.id}}
-    
+    const some = req.user.comeup.some(elm => JSON.stringify(elm._id)===JSON.stringify(req.params.id))
+
+    let userComeUp 
+    some ? userComeUp = {$pull: {comeup: req.params.id}} : userComeUp = {$push: {comeup: req.params.id}}
+  
     const promise1 = User.findByIdAndUpdate(req.user._id, userComeUp, {new: true})
     .populate('property')
     .populate({
@@ -72,14 +74,15 @@ router.post('/new', (req, res, next) => {
     const promise2 =  Event.findById(req.params.id )
       .then(theEvent => {
 
-        let eventComeUp = {}
+        let eventComeUp
         theEvent.userid.includes(req.user._id) ? eventComeUp = {$pull: {userid: req.user._id}} : eventComeUp = {$push: {userid: req.user._id}}  
         return Event.findByIdAndUpdate(req.params.id, eventComeUp, {new: true})
       
       })
                         
     Promise.all([promise1,promise2])
-      .then(x => res.json(x[0]))
+      .then(x => {
+        res.json(x[0])})
       .catch(err => next(err))
     
   })
@@ -96,5 +99,49 @@ router.post('/new', (req, res, next) => {
       .catch(err => next(err))
 
   })
+
+  router.get('/getOldEvents', (req, res, next) => {
+
+    Event.find({dateevent : { $lt: moment(new Date(date)).format('YYYY-MM-DD')}}).sort({dateevent: 1})
+      .populate({ path: "userid", select: "username" })
+      .populate('useridcreator')
+      .then(allEvent => res.json(allEvent))
+      .catch(err => next(err))
+
+  })
+
+  router.get('/edit-event/:id', (req, res, next) => {
+
+    const eventId = req.params.id
+    
+    console.log(req.params.id)
+
+    Event.findById(eventId)
+    .then(theEvent => res.json(theEvent))
+    .catch(err => next(err))
+  })
+
+  router.post('/edit-event', (req, res, next) => {
+      
+    const {imgurl, description, title} = req.body
+
+    console.log(req.body.imgurl)
+    console.log(req.body.description)
+    console.log(req.body.title)
+
+
+    const evenUpdated = {
+      imgurl: req.body.imgurl,
+      description: req.body.description,
+      title : req.body.title,
+    }
+    
+    Event.findByIdAndUpdate(req.body._id, { imgurl, description, title  } , {new : true})
+        .then(theEvent =>{
+          console.log('evento actualizado',theEvent)
+          res.json(theEvent)})
+        .catch(err => next(err))
+  })
+
 
 module.exports = router

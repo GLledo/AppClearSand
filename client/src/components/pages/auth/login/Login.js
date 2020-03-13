@@ -7,6 +7,8 @@ import Container from 'react-bootstrap/Container'
 // --------- SERVICES ---------
 import AuthServices from '../../../../services/auth.services'
 
+
+import './login.css'
 class Login extends Component {
 
     constructor(props) {
@@ -43,7 +45,7 @@ class Login extends Component {
 
         return (
 
-            <Container>
+            <Container className='card-edit'>
 
                 <h1>Inicio de sesión</h1>
 

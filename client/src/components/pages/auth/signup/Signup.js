@@ -7,6 +7,8 @@ import Container from 'react-bootstrap/Container'
 // --------- SERVICES ---------
 import AuthServices from '../../../../services/auth.services'
 
+import './signup.css'
+
 class Signup extends Component {
 
     constructor(props) {
@@ -29,6 +31,7 @@ class Signup extends Component {
             .then(theLoggedNewUser => {
                 this.setState({ username: '', password: '' })
                 this.props.setTheUser(theLoggedNewUser)
+                this.props.history.push('/')
             })
             .catch(err => console.log({ err }))
     }
@@ -43,7 +46,7 @@ class Signup extends Component {
 
         return (
 
-            <Container>
+            <Container className='card-edit'>
 
                 <h1>Registro de usuarios</h1>
 
