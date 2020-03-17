@@ -20,7 +20,7 @@ class Home extends Component {
         this.eventServices = new EventServices()
     }
 
-    componentDidMount = () => this.getFiveEvents()
+    //componentDidMount = () => this.getFiveEvents()
 
         getFiveEvents = () => {
             

@@ -12,7 +12,7 @@ router.get('/getFiveBeaches', (req, res, next) => {
         for(let i = 0; i < 5; i++){arrBeach.push(allBeaches[Math.floor(Math.random()*allBeaches.length)])}
         res.json(arrBeach)
     })
-  .catch(err => console.log(err))
+  .catch(err => next(err))
 
 });
 
@@ -26,7 +26,7 @@ router.get('/getOneBeach/:id', (req, res, next) => {
       }
     })
     .then(theBeach =>res.json(theBeach))
-    .catch(err => console.log(err))
+    .catch(err => next(err))
 
 })
 
@@ -40,7 +40,7 @@ router.get('/getAllComunidad/:comunidad' , (req, res, next) => {
     }
   })
   .then(allBeaches => res.json(allBeaches))
-  .catch(err => console.log(err))
+  .catch(err => next(err))
 
 })
 
