@@ -114,8 +114,6 @@ router.post('/new', (req, res, next) => {
 
     const eventId = req.params.id
     
-    console.log(req.params.id)
-
     Event.findById(eventId)
     .then(theEvent => res.json(theEvent))
     .catch(err => next(err))
@@ -125,11 +123,6 @@ router.post('/new', (req, res, next) => {
       
     const {imgurl, description, title} = req.body
 
-    console.log(req.body.imgurl)
-    console.log(req.body.description)
-    console.log(req.body.title)
-
-
     const evenUpdated = {
       imgurl: req.body.imgurl,
       description: req.body.description,
@@ -138,7 +131,6 @@ router.post('/new', (req, res, next) => {
     
     Event.findByIdAndUpdate(req.body._id, { imgurl, description, title  } , {new : true})
         .then(theEvent =>{
-          console.log('evento actualizado',theEvent)
           res.json(theEvent)})
         .catch(err => next(err))
   })
